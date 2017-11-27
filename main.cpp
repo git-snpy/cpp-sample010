@@ -11,15 +11,28 @@
  * Created on 2017/11/27, 15:55
  */
 
-#include <cstdlib>
-
+#include <iostream>
+#include <vector>
 using namespace std;
+
+struct X {
+    vector<double> vec;
+    X() = default;
+    X(const X& x) : vec(x.vec) {}
+};
+
+X f() {
+    X x;
+    x.vec.resize(1000000);
+    return x;
+}
 
 /*
  * 
  */
 int main(int argc, char** argv) {
-
+    for (int i = 0; i < 1000; ++i) X x(f());
+    
     return 0;
 }
 
